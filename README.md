@@ -1,7 +1,9 @@
-📚 BookStore Web Scraper
+# BookStore Web Scraper
+
+
 A beginner-friendly yet production-ready Python web scraping project that collects book data from BooksToScrape.com. The project dynamically scrapes all book titles, prices, ratings, and availability across multiple pages and stores the data in Excel and JSON formats.
 
-🚀 Features
+##Features
 🔁 Dynamic Pagination – Automatically detects the total number of pages to scrape.
 
 🧠 BeautifulSoup + Requests – Efficient HTML parsing and data extraction.
@@ -14,7 +16,7 @@ A beginner-friendly yet production-ready Python web scraping project that collec
 
 🧩 Modular Code – Clean, maintainable, and production-ready Python structure.
 
-📂 Project Structure
+## Project Structure
 bash
 Copy
 Edit
@@ -27,7 +29,7 @@ book-scraper/
 ├── scraper.log              # Logs scraping activity
 ├── requirements.txt         # Required Python libraries
 └── start.py                 # Main scraping script
-🛠️ Requirements
+## Requirements
 Python 3.7+
 
 Libraries:
@@ -46,7 +48,7 @@ pip install -r requirements.txt
 ▶️ How to Run
 python start.py
 
-The script will:
+###The script will:
 
 Crawl all available pages of books.
 
@@ -54,20 +56,20 @@ Extract: Title, Price, Rating (1–5), Availability.
 
 Save data into output/books.xlsx and output/books.json.
 
-📸 Sample Output Preview
+### Sample Output Preview
 Title	Price (£)	Rating	Availability
 It's Only the Himalayas	45.17	2	In stock
 The Bear and the Piano	36.89	4	In stock
 Sophie's World	15.94	5	In stock
 
-📌 Use Case Ideas
+## Use Case Ideas
 📈 Analyze price vs. rating using Python/Excel visualizations.
 
 🧠 Learn fundamentals of web scraping.
 
 🧑‍💻 Add as a mini project to your ML/Data Science/Backend portfolio.
 
-🧠 What You Learn
+###What You Learn
 Navigating and parsing HTML using BeautifulSoup
 
 Sending HTTP requests using Requests
@@ -78,7 +80,7 @@ Writing clean, modular, and reusable code
 
 Logging and exception handling for real-world apps
 
-💡 Future Enhancements
+### Future Enhancements
 ⏰ Add scheduling for auto-scraping (using cron or schedule lib)
 
 🌍 Add proxy/headers support to simulate real browser
@@ -87,5 +89,5 @@ Logging and exception handling for real-world apps
 
 ☁️ Push data to Google Sheets / Firebase / MongoDB
 
-👨‍💻 Author
-Jasvanth Varma Muppala – Engineering Student | Aspiring Machine Learning Engineer
+### Author
+#Jasvanth Varma Muppala – Engineering Student | Aspiring Machine Learning Engineer
