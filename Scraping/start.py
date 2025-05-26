@@ -5,14 +5,12 @@ import logging
 import json
 import os
 
-# Setup logging
 logging.basicConfig(
     filename='scraper.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# Base URL for the books site
 BASE_URL = "http://books.toscrape.com/catalogue/page-{}.html"
 
 def get_last_page():
@@ -21,7 +19,6 @@ def get_last_page():
     response = requests.get(url)
     response.encoding = 'utf-8'
     soup = BeautifulSoup(response.text, "html.parser")
-    # Find the total number of pages from the pagination element
     try:
         page_text = soup.find("li", class_="current").text.strip()
         last_page = int(page_text.split()[-1])
@@ -29,7 +26,7 @@ def get_last_page():
         return last_page
     except Exception as e:
         logging.error(f"Error finding total pages: {e}")
-        return 5  # Default to 5 pages if error occurs
+        return 5  
 
 def scrape_page(page_num):
     """Scrape a single page and return a list of book dictionaries."""
@@ -53,7 +50,7 @@ def scrape_page(page_num):
             title = book.h3.a["title"]
             price = book.find("p", class_="price_color").text.replace("£", "").strip()
             availability = book.find("p", class_="instock availability").text.strip()
-            rating_class = book.p["class"][1]  # e.g., "Three"
+            rating_class = book.p["class"][1]  
             rating = rating_map.get(rating_class, 0)
 
             page_books.append({
@@ -72,12 +69,10 @@ def save_data(data, excel_path="output/books.xlsx", json_path="output/books.json
     """Save scraped data to Excel and JSON formats."""
     os.makedirs(os.path.dirname(excel_path), exist_ok=True)
     
-    # Save to Excel
     df = pd.DataFrame(data)
     df.to_excel(excel_path, index=False)
     logging.info(f"Data saved to {excel_path}")
 
-    # Save to JSON
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
     logging.info(f"Data saved to {json_path}")
@@ -91,7 +86,7 @@ def main():
         all_books.extend(books_on_page)
 
     save_data(all_books)
-    print("✅ Scraping complete! Data saved to output/books.csv and output/books.json")
+    print(" Scraping complete! Data saved to output/books.csv and output/books.json")
 
 if __name__ == "__main__":
     main()
